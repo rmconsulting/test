@@ -1,0 +1,55 @@
+<ion-view view-title="{{'CUENTA_L' | translate}} ({{'admin'+admin.mode | translate}}{{admin.ciudad.nombre | translate}})">
+  <ion-content>
+    <ion-item class="item item-divider">
+      <div class="alert">
+         <div class="item item-input item-select item-stable" ng-click="showPass()">{{'CHGPWD' | translate}}</div>
+          <div ng-show="showform">
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">{{'PASS_L' | translate}}</span>
+                <input type="password"  ng-model="securityToken.pass" placeholder="password" required>
+              </label>
+            <form name='form'>
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">{{'NEWPASS' | translate}}</span>
+                <input data-ng-model='securityToken.newPassword' type="password" name='newPassword' placeholder='new password' required>
+              </label>
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">{{'REPPASS' | translate}}</span>
+                <input ng-model='securityToken.passwordVerify' type="password" name='confirm_password' placeholder='confirm password' required data-password-verify="securityToken.newPassword">
+                <div ng-show="form.confirm_password.$error.passwordVerify">
+                  {{'NOTEQPASS' | translate}}</div>
+              </label>
+            </form>
+              <a ng-click="accept()" class="button button-positive icon ion-checkmark">{{'ACCEPT' | translate}}</a>
+              <a ng-click="cancel()" class="button button-positive icon ion-close">{{'CANCEL' | translate}}</a>
+          </div>
+      </div>
+     </ion-item>
+
+     <ion-item class="item item-divider">
+        <div class="item item-input item-select item-stable" ng-click="showPreferences()">{{'PREFS' | translate}}</div>
+        <div ng-show="showpref">
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">{{'LANG' | translate}}</span>
+            <select ng-model="language.selected" ng-change="chgLang()">
+                <option value="en-us">English</option>
+                <option value="es-ar">Spanish</option>
+              </select>
+          </label>
+        </div>
+
+          <div ng-show="error.status" class="error-message">
+            <div class="alert alert-warning">
+              <label class="error-message">{{error.message}}  </label>
+              <strong><button ng-click="clearError()">X</button></strong>
+            </div>
+          </div>
+          <div class="ok-message" ng-show="ok.status">
+            <div class="alert alert-warning">
+              <label class="ok-message"> {{ok.message}}</label>
+              <strong><button ng-click="clearMessage()">X</button></strong>
+            </div>
+          </div>
+     </ion-item>
+  </ion-content>
+</ion-view>

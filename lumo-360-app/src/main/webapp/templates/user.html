@@ -1,0 +1,79 @@
+<ion-view view-title="{{'USER_L' | translate}} ({{'admin'+validateRol('distrito_admin') | translate}}{{admin.ciudad.nombre | translate}})">
+  <ion-content>
+    <div ng-show="showform">
+      <div class="list">
+            <ion-item>
+              <ion-label>{{'USER_PD' | translate}}</ion-label>
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">{{'USER_AL' | translate}}</span>
+                <input type="text" ng-model="usuario.username" placeholder="{{usuario.username}}" ng-disabled="!validateRol('distrito_admin')">
+              </label>
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">{{'NAME' | translate}}</span>
+                <input type="text" ng-model="usuario.name" placeholder="{{usuario.name}}" ng-disabled="!validateRol('distrito_admin')">
+              </label>
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">{{'L_NAME' | translate}}</span>
+                <input type="text" ng-model="usuario.apellido" placeholder="{{usuario.apellido}}" ng-disabled="!validateRol('distrito_admin')">
+              </label>
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">{{'MAIL' | translate}}</span>
+                <input type="text" ng-model="usuario.email" placeholder="{{usuario.email}}" ng-disabled="!validateRol('distrito_admin')">
+              </label>
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">{{'USER_CE' | translate}}</span>
+                <input type="text" ng-model="usuario.cellPhone" placeholder="{{usuario.cellPhone}}" ng-disabled="!validateRol('distrito_admin')">
+              </label>
+              <form name='form'>
+                <label class="item item-input item-stacked-label"  ng-show="service === 'new'">
+                  <span class="input-label">{{'PASS_L' | translate}}</span>
+                  <input data-ng-model='usuario.password' type="password" name='password' placeholder='{{usuario.password}}' required>
+                </label>
+                <label class="item item-input item-stacked-label" ng-show="service === 'new'">
+                  <span class="input-label">{{'REPPASS' | translate}}</span>
+                  <input ng-model='usuario.passwordVerify' type="password" name='confirm_password' placeholder='confirm password' required data-password-verify="usuario.password">
+                  <div ng-show="form.confirm_password.$error.passwordVerify">
+                    {{'NOTEQPASS' | translate}}</div>
+                </label>
+              </form>
+            </ion-item>
+            <ion-item>
+              <label class = "item item-input item-select item-stable">
+                <div class = "input-label"> {{'PROFILE' | translate}} </div>
+                <select ng-model="profile.selected" ng-disabled="NotSelected" ng-change="setProfile()"
+                        ng-options="profile.id as profile.nombre for profile in profiles">
+                </select>
+              </label>
+            </ion-item>
+
+            <ion-item ng-show="validateRol('ciudad_admin')">
+              <span class="input-label">{{'CITY' | translate}} <b> {{admin.ciudad.nombre}} </b></span>
+            </ion-item>
+            <ion-item>
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">{{'USER_RL' | translate}}</span>
+                <multiselect items="roles" text-property="name" value-property="id" note-text="Seleccionar"
+                             value-changed="addSector(value)" style="width: 40%">
+                </multiselect>
+              </label>
+            </ion-item>
+            <div ng-show="error.status" class="error-message">
+              <div class="alert alert-warning">
+                <label class="error-message">{{error.message}}  </label>
+                <strong><button ng-click="clearError()">X</button></strong>
+              </div>
+            </div>
+            <ion-item>
+              <a  ng-click="save()" class="button button-positive icon ion-checkmark" ng-show="validateRol('distrito_admin')">{{'SAVE' | translate}}</a>
+              <a  ng-click="cancel()" class="button button-dark  icon ion-close" ng-show="validateRol('distrito_admin')">{{'CANCEL' | translate}}</a>
+            </ion-item>
+      </div>
+    </div>
+
+
+    <div class="ok-message" ng-hide="showform">
+        {{mensaje}}
+    </div>
+  </ion-content>
+
+</ion-view>

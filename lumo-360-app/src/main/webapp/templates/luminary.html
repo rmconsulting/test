@@ -1,0 +1,29 @@
+<ion-view view-title="Datos Luminaria">
+  <ion-content>
+    <div ng-show="showform">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Nombre</span>
+        <input type="text" ng-model="luminaria.nombre" placeholder="{{luminaria.nombre}}" ng-disabled="!loginData.admin">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Latitud</span>
+        <input type="text" ng-model="luminaria.latitud" placeholder="{{luminaria.latitud}}" ng-disabled="!loginData.admin">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Longitud</span>
+        <input type="text" ng-model="luminaria.longitud" placeholder="{{luminaria.longitud}}" ng-disabled="!loginData.admin">
+      </label>
+      <ion-item>
+        <a  ng-click="save()" class="button button-positive icon ion-checkmark" ng-show="loginData.admin">Guardar</a>
+        <a  ng-click="cancel()" class="button button-dark  icon ion-close" ng-show="loginData.admin">Cancelar</a>
+      </ion-item>
+    </div>
+
+    <div ng-show="error.status" class="error-message"> {{error.message}}</div>
+
+    <div class="ok-message" ng-show="!showform">
+        {{mensaje}}
+    </div>
+  </ion-content>
+
+</ion-view>

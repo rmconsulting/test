@@ -1,0 +1,32 @@
+<ion-view view-title="Controladores">
+  <ion-content>
+
+    <ion-item href="#/app/controlador/new" ng-show="loginData.admin">
+      <span class="button button-positive icon ion-plus" > Nuevo </span>
+    </ion-item>
+
+    <div class="ok-message"> {{mensaje}} </div>
+    <div ng-show="error.status" class="error-message"> {{error.message}}</div>
+
+    <div class="row grayonblack">
+      <div class="col">Nombre</div>
+    </div>
+    <ion-list>
+        <ion-item ng-repeat="controlador in controladores">
+          <div class="row">
+            <a class="col href" ng-href="#/app/controladores/{{controlador.id}}">{{controlador.nombre}}</a>
+            <a class="col href" ng-href="#/app/controladores/{{controlador.id}}">latitud</a>
+            <a class="col href" ng-href="#/app/controladores/{{controlador.id}}">longitud</a>
+            <div class="button button-positive icon ion-trash-a" ng-click="del(controlador)" ng-show="loginData.admin">
+            </div>
+          </div>
+        </ion-item>
+    </ion-list>
+    <ion-infinite-scroll
+      ng-if="moreDataCanBeLoaded()"
+      distance="3%"
+      icon="ion-loading-c"
+      on-infinite="loadMoreData()">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

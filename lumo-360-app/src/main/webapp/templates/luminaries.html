@@ -1,0 +1,37 @@
+<ion-view view-title="Luminarias">
+  <ion-content>
+
+    <ion-item href="#/app/luminaries/new" ng-show="loginData.admin">
+      <span class="button button-positive icon ion-plus" > Nuevo </span>
+    </ion-item>
+
+    <div class="ok-message"> {{mensaje}} </div>
+    <div ng-show="error.status" class="error-message"> {{error.message}}</div>
+
+    <div class="row grayonblack">
+        <div class="col">Nombre</div>
+        <div class="col">Latitud</div>
+        <div class="col">Longitud</div>
+        <div class="col">Concentrador</div>
+     </div>
+
+    <ion-list>
+      <ion-item ng-repeat="luminaria in luminarias">
+          <div class="row">
+             <a class="col href" ng-href="#/app/luminaries/{{luminaria.id}}">{{luminaria.nombre}}</a>
+             <a class="col href" ng-href="#/app/luminaries/{{luminaria.id}}">{{luminaria.latitud}}</a>
+             <a class="col href" ng-href="#/app/luminaries/{{luminaria.id}}">{{luminaria.longitud}}</a>
+            <a class="col href" ng-href="#/app/luminaries/{{luminaria.id}}">{{luminaria.concentrador.nombre}}</a>
+             <div class="button button-positive icon ion-trash-a" ng-click="del(luminaria)" ng-show="loginData.admin">
+             </div>
+          </div>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll
+      ng-if="moreDataCanBeLoaded()"
+      distance="3%"
+      icon="ion-loading-c"
+      on-infinite="loadMoreData()">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

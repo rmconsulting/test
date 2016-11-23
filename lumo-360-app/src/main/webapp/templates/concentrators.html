@@ -1,0 +1,33 @@
+<ion-view view-title="Concentradores">
+  <ion-content>
+
+    <ion-item href="#/app/concentrators/new" ng-show="loginData.admin">
+      <span class="button button-positive icon ion-plus" > {{'NEW' | translate}} </span>
+    </ion-item>
+
+    <div class="ok-message"> {{mensaje}} </div>
+    <div ng-show="error.status" class="error-message"> {{error.message}}</div>
+
+    <div class="row grayonblack">
+      <div class="col">{{'NAME' | translate}}</div>
+      <div class="col">{{'LAT' | translate}}</div>
+      <div class="col">{{'LONG' | translate}}</div>
+    </div>
+    <ion-list>
+        <ion-item ng-repeat="concentrador in concentradores">
+          <div class="row">
+            <a class="col href" ng-href="#/app/concentrators/{{concentrador.id}}">{{concentrador.nombre}}</a>
+            <a class="col href" ng-href="#/app/concentrators/{{concentrador.id}}">{{concentrador.latitud}}</a>
+            <a class="col href" ng-href="#/app/concentrators/{{concentrador.id}}">{{concentrador.longitud}}</a>
+            <div class="button button-positive icon ion-trash-a" ng-click="del(concentrador)" ng-show="loginData.admin">
+            </div>
+          </div>
+        </ion-item>
+    </ion-list>
+    <ion-item align="center" ng-show="showformNav">
+      <a class="ion-android-arrow-back" ng-click="loadMoreData('ant')"></a>{{'PAGINATION' | translate}}
+      <a class="ion-android-arrow-forward" ng-click="loadMoreData('sig')"></a>
+      <ion-item>
+
+  </ion-content>
+</ion-view>

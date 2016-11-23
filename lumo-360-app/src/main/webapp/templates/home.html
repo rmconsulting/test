@@ -1,0 +1,39 @@
+<ion-view view-title="{{'HOME' | translate}}">
+  <ion-content>
+    <div class="signup-background" width="100%" height="100%">
+      <h1>Bienvenido al administrador <br>
+          {{loginData.username}}</h1>
+      </div><img src="../img/homero.jpg" class="fixedImage">
+
+    <ion-item>
+      <ion-label>Ubicacion</ion-label>
+      <label class = "item item-input item-select item-stable" ng-show="validateRol('user_admin')">
+        <div class = "input-label"> {{'CTY' | translate}} </div>
+        <select ng-model="pais.selected" ng-disabled="NotSelected" ng-change="loadEstado(pais.selected);"
+                ng-options="pais.id as pais.nombre for pais in paises"></select>
+      </label>
+      <label class = "item item-input item-select item-stable" ng-show="validateRol('user_admin')">
+        <div class = "input-label"> {{'STATE' | translate}} </div>
+        <select ng-model="estado.selected" ng-disabled="NotSelected"
+                ng-options="estado.id as estado.nombre for estado in estados" ng-change="loadCiudad(estado.selected)"></select>
+      </label>
+
+      <label class = "item item-input item-select item-stable">
+        <div class = "input-label"> {{'CITY' | translate}} </div>
+        <select ng-model="ciudad.selected">
+        <option ng-repeat="ciudad in ciudades track by $index" ng-value="$index">
+          {{ciudad.nombre}}
+        </option>
+        </select>
+      </label>
+    </ion-item>
+    <div ng-show="error.status" class="error-message">
+      <div class="alert alert-warning">
+        <label class="error-message">{{error.message}}  </label>
+        <strong><button ng-click="clearError()">X</button></strong>
+      </div>
+    </div>
+    <ion-item ng-show="notValidateRol('user_admin')">
+
+</ion-content>
+  </ion-view>

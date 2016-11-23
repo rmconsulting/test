@@ -1,0 +1,23 @@
+<ion-view view-title="Mapa">
+
+  <div class="floating-menu" ng-show="showmenu">
+    <h3>Menu Luminaria</h3>
+    <a ng-click="onLuminaria()" class="ion-android-volume-up">Prender</a><br/>
+    <a ng-click="offLuminaria()" class="ion-android-volume-off">Apagar</a><br/>
+    <a ng-click="dimmerLuminaria()" class="ion-android-volume-down">Atenuar</a>
+  </div>
+
+  <ion-content>
+
+    <ion-item>
+      <span> Acciones sobre artefactos </span>
+      <div ng-show="ok.status" class="ok-message"> {{ok.message}} </div>
+      <div ng-show="error.status" class="error-message"> {{error.message}}</div>
+    </ion-item>
+
+
+    <ion-view align="center">
+        <div id="map" data-tap-disabled="true"></div>
+      </ion-view>
+  </ion-content>
+</ion-view>

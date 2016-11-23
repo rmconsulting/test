@@ -1,0 +1,54 @@
+<ion-view view-title="Concentrador">
+  <ion-content>
+    <div ng-show="showform">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">{{'NAME' | translate}}</span>
+        <input type="text" ng-model="concentrador.nombre" placeholder="{{concentrador.nombre}}" ng-disabled="!loginData.admin">
+      </label>
+
+    </div>
+
+    <div ng-show="error.status" class="error-message"> {{error.message}}</div>
+
+    <div class="ok-message" ng-show="!showform">
+      {{mensaje}}
+    </div>
+
+    <ion-list ng-show="showform">
+      <label class="item item-input item-stacked-label">
+        {{'PUNTOS_LUZ_CONC' | translate}}
+      </label>
+      <ion-item ng-repeat="puntoluz in puntosdeluz">
+        <div class="row">
+          <a class="col href" ng-href="#/app/pdl/{{puntoluz.id}}">{{puntoluz.nombre}}</a>
+          <a class="col href" ng-href="#/app/pdl/{{puntoluz.id}}">{{puntoluz.latitud}}</a>
+          <a class="col href" ng-href="#/app/pdl/{{puntoluz.id}}">{{puntoluz.longitud}}</a>
+          <div class="button button-positive icon ion-trash-a" ng-click="delpdl(puntoluz)" ng-show="loginData.admin">
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+    <div ng-show="showform">
+      <div class="row grayonblack">{{'PUNTOS_LUZ_DISP' | translate}}</div>
+      <ion-list ng-repeat="item in availables">
+        <ion-item>
+          <a ng-click="addpdl(item)" class="icon ion-plus-circled button-positive" ng-show="loginData.admin"></a>
+            <span style="display:inline-block;">
+                <img  ng-src="{{'../img/'+ item.iconName +'.png'}}">({{item.nombre}})
+              </span>
+        </ion-item>
+      </ion-list>
+
+
+      <ion-item>
+        <a  ng-click="save()" class="button button-positive icon ion-checkmark" ng-show="loginData.admin">{{'SAVE' | translate}}</a>
+        <a  ng-click="cancel()" class="button button-dark  icon ion-close" ng-show="loginData.admin">{{'CANCEL' | translate}}</a>
+      </ion-item>
+    </div>
+
+    <ion-item align="center" ng-show="showformNav">
+      <a class="ion-android-arrow-back" ng-click="loadMoreData('ant')"></a>{{'PAGINATION' | translate}}
+      <a class="ion-android-arrow-forward" ng-click="loadMoreData('sig')"></a>
+    <ion-item>
+  </ion-content>
+</ion-view>

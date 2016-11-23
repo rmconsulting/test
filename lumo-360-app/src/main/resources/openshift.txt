@@ -1,0 +1,13 @@
+
+Listar en que crear la aplicacion. rhc cartridge list 
+Crear aplicacion tomcat 7.  rhc app create prueba jbossews-2.0
+Agregar el cartdrigde de postgresql. rhc cartridge add postgresql-9.2 -a prueba
+
+
+
+Para loguearse en la base
+ssh 57c08a4b89f5cfd29200015f@prueba-gastoncoco.rhcloud.com
+
+Y luego psql DBNAME USERNAME
+
+

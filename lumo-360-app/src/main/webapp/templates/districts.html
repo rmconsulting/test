@@ -1,0 +1,26 @@
+<ion-view view-title="Distritos">
+  <ion-content>
+
+    <ion-item href="#/app/districts/new" ng-show="loginData.admin">
+      <span class="button button-positive icon ion-plus" > Nuevo </span>
+    </ion-item>
+
+    <div class="ok-message"> {{mensaje}} </div>
+    <div ng-show="error.status" class="error-message"> {{error.message}}</div>
+
+     <div class="row grayonblack">
+        <div class="col">Nombre</div>
+        <div class="col">Plano GPS</div>
+     </div>
+
+      <ion-item ng-repeat="persona in personas">
+        <div class="row">
+        <a class="col href" ng-href="#/app/districts/{{persona.id}}">{{persona.nombre}}</a>
+        <a class="col href" ng-href="#/app/districts/{{persona.id}}">(32.5,-23.5)</a>
+          <div class="col" ng-click="del(persona)" ng-show="loginData.admin">
+            <span class="button button-positive icon ion-trash-a">  </span>
+          </div>
+        </div>
+      </ion-item>
+  </ion-content>
+</ion-view>

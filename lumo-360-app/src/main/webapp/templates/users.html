@@ -1,0 +1,33 @@
+<ion-view view-title="{{'USERS' | translate}} ({{'admin'+validateRol('distrito_admin')  | translate}}{{admin.ciudad.nombre | translate}})">
+  <ion-content>
+
+    <ion-item href="#/app/users/new" ng-show="validateRol('distrito_admin')">
+      <span class="button button-positive icon ion-plus" > {{'NEW' | translate}} </span>
+    </ion-item>
+
+    <div class="ok-message"> {{mensaje}} </div>
+    <div ng-show="error.status" class="error-message">
+      <div class="alert alert-warning">
+        <label class="error-message">{{error.message}}  </label>
+        <strong><button ng-click="clearError()">X</button></strong>
+      </div>
+    </div>
+
+    <div class="row grayonblack">
+      <div class="col">{{'NAME' | translate}}</div>
+      <div class="col">{{'L_NAME' | translate}}</div>
+      <div class="col">{{'MAIL' | translate}}</div>
+    </div>
+
+    <ion-item ng-repeat="usuario in usuarios">
+      <div class="row">
+        <a class="col href" ng-href="#/app/users/{{usuario.id}}">{{usuario.name}}</a>
+        <a class="col href" ng-href="#/app/users/{{usuario.id}}">{{usuario.apellido}}</a>
+        <a class="col href" ng-href="#/app/users/{{usuario.id}}">{{usuario.email}}</a>
+        <div class="col" ng-click="del(usuario)" ng-show="validateRol('distrito_admin')">
+          <span class="button button-positive icon ion-trash-a">  </span>
+        </div>
+      </div>
+    </ion-item>
+  </ion-content>
+</ion-view>

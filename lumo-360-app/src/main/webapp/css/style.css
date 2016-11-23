@@ -1,0 +1,61 @@
+/* Empty. Add your own CSS if you like */
+.error-message{
+  color: #e42112;
+  font-size: 18px;
+}
+
+.ok-message{
+  color: #28a54c;
+  font-size: 18px;
+}
+
+.blueonwhite{
+  background-color: #4b8bf4;
+  color:#000000;
+  font-style: inherit;
+  font-size: medium;
+}
+
+.spinner svg {
+  width: 19% !important;
+  height: 85px !important;
+}
+
+.grayonblack{
+  background-color: #888888;
+  color:#000000;
+  font-style: inherit;
+  font-size: medium;
+}
+.icon {
+   font-size: 20px;
+}
+
+.fixedImage{
+  max-height: 200px;
+  max-width: 200px;
+}
+
+.href{
+  text-decoration: none;
+  color: #333333;
+}
+
+.scroll {
+  height: 100%;
+}
+
+#map {
+  width: 90%;
+  height: 90%;
+}
+
+div.floating-menu{
+  position:fixed;
+  background:#fff4c8;
+  border:1px solid #ffcc00;
+  width:150px;
+  z-index:100;
+  top:44px;
+  right: 50%;
+}
